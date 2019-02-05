@@ -9,7 +9,7 @@ import { User } from './user';
 
 export class AppComponent {
   title = 'Github users';
-  newUser= new User("","","",0,0,0,"");
+  newUser= new User("","","",0,0,0,"",);
   constructor() { }
 
   ngOnInit() {

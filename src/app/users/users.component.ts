@@ -1,33 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
 import { User } from '../user';
-import{environment} from '../../environments/environment'
-import { Injectable } from '@angular/core';
+// import { Injectable } from '@angular/core';
+import{UserRequestService} from'../user-http/user-request.service';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
+  providers:[UserRequestService],
   styleUrls: ['./users.component.css']
 })
-@Injectable()
+// @Injectable()
 export class UsersComponent implements OnInit {
-  user:User
+  user:User;
+  search="";
+  submitIniput(){
+    this.userService.UserRequest(this.search);
+    console.log(this.search);
+  }
 
   constructor(
-    private http:HttpClient) {
+    private userService:UserRequestService) {
     
-     }
+}
 
   ngOnInit() {
-    interface ApiResponse{
+    this.userService.UserRequest("Nyirabazungu");
+    this.user=this.userService.user
+    // interface ApiResponse{
 
-    avatar_url:string;
-    gravatar_id:string;
-    name:string;
-    public_repos:number;
-    followers:number;
-    following:number;
-    html_url:string;
+      // avatar_url:string;
+      // gravatar_id:string;
+      // name:string;
+      // public_repos:number;
+      // followers:number;
+      // following:number;
+      // html_url:string;
+    
+   
   }
 //   let promise =new Promise((resolve,reject)=>{
 //  this.http.get<ApiResponse>('https://api.github.com/users/daneden?access_token=' + environment.apiKey).subscribe(data=>{
@@ -46,18 +55,18 @@ export class UsersComponent implements OnInit {
 //   this.http.get<ApiResponse>(environment.apiUrl).toPromise().then(response=>{
 //     let promise =new Promise((resolve,reject)=>{
 
-  let promise =new Promise((resolve,reject)=>{
-       this.http.get<ApiResponse>(environment.apiKey).toPromise().then(response=>{
-       this.user = new User(response.avatar_url,response. gravatar_id,response. name,response.public_repos,response.followers,response.following,response.html_url);
-            resolve()
-        },
+  // let promise =new Promise((resolve,reject)=>{
+  //      this.http.get<ApiResponse>('https://api.github.com/users/Nyirabazungu?access_token=' + environment.apiKey).toPromise().then(response=>{  
+  //      this.user = new User(response.avatar_url,response. gravatar_id,response. name,response.public_repos,response.followers,response.following,response.html_url);
+  //           resolve()
+  //       },
        
-        )
-        })  
-         err=>{
-        this.user= new User("","","",0,0,0,"");
-        
-        return promise
-       }
-      }
-        }
+  //       )
+  //       })  
+  //        err=>{
+  //       this.user= new User("","","",0,0,0,"",);
+  //       console.log("please try again");
+  //       return promise
+  //      }
+                // }}}
+}

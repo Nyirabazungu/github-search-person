@@ -8,7 +8,7 @@ export class User {
         public followers:number,
         public following:number,
         public html_url:string,
-        ){
+       ){
     this.showDescription=false
     }
 }
