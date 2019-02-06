@@ -31,7 +31,7 @@ export class UserRequestService {
 
     }
     let promise = new Promise((resolve, reject) => {
-      this.http.get<ApiResponse>('https://api.github.com/users/' + userInput + '?access_token=' + environment.apiKey).toPromise().then(response => {
+      this.http.get<ApiResponse>('https://api.github.com/users/' + userInput + '?access_token=bf4a6d0d96e6bbfe82f772c58f9d92ffeb83e8b7').toPromise().then(response => {
 
         this.user.avatar_url = response.avatar_url;
         this.user.name = response.name;
