@@ -1,19 +1,17 @@
 <div class="container">
-  
-   <input class="input-field" type="text" placeholder="GitHub username" [(ngModel)]="search" name="search">
-    <button (click)="submitIniput()">search</button>
-   <div class="row"> 
-    <blockquote>
-
-   <img src ="{{user.avatar_url}}">
-    
-   <p>Name:{{user.name}}</p> 
-   <p>Repositories:{{user.public_repos}}</p>
-   <p>Follower:{{user.followers}}</p>
-   <p>Following:{{user.following}}</p>
-   <a href="{{user.html_url}}" target="_blank">Link to the github page</a>
-
-  </blockquote>
-
+<div class="row">
+   <blockquote>
+<div class="first">
+      <img src="{{user.avatar_url}}">
 </div>
+      <p>Name:{{user.name}}</p>
+      <p>Repositories:{{user.public_repos}}</p>
+      <p>Follower:{{user.followers}}</p>
+      <p>Following:{{user.following}}</p>
+      <a href="{{user.html_url}}" target="_blank">Link to the github page</a>
+
+    </blockquote>
+    <input class="input-field" type="text" placeholder="GitHub username" [(ngModel)]="search" name="search">
+    <button (click)="submitIniput()">search</button>
+  </div>
 </div>
